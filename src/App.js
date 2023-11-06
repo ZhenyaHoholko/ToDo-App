@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Input from "./Components/Input";
+import List from "./Components/List";
+import { useState } from "react";
 
 function App() {
+  const [task, setTask] = useState([]);
+  const [state, setState] = useState(false);
+
+  const handleClick = (el) => {
+    setTask([...task.filter((item) => item.id !== el.id)]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>Let's do it!</div>
+      <Input task={task} setTask={setTask} />
+      {task.map(
+        (el) => (
+          <List
+            state={state}
+            setState={setState}
+            listItem={el}
+            handleClick={handleClick}
+            task={task}
+          />
+        )
+        // (<div>
+        //   <button onClick={() => }>
+        //     {state ? "Save" : "Change"}
+        //   </button>{" "}
+        // </div>
+      )}
     </div>
   );
 }
