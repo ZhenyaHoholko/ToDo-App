@@ -4,34 +4,28 @@ import Input from "./Components/Input";
 import List from "./Components/List";
 import { useState } from "react";
 
-function App() {
+function App(inputText) {
   const [task, setTask] = useState([]);
-  const [state, setState] = useState(false);
 
-  const handleClick = (el) => {
-    setTask([...task.filter((item) => item.id !== el.id)]);
+  const handleDelete = (id) => {
+    setTask([...task.filter((el) => el.id !== id)]);
   };
-
+  const handleChange = (id, inputText) => {
+    setTask([
+      ...task.map((el) => (el.id === id ? { ...el, title: inputText } : el)),
+    ]);
+  };
   return (
     <div className="App">
-      <div>Let's do it!</div>
+      <p>Let's do it!</p>
       <Input task={task} setTask={setTask} />
-      {task.map(
-        (el) => (
-          <List
-            state={state}
-            setState={setState}
-            listItem={el}
-            handleClick={handleClick}
-            task={task}
-          />
-        )
-        // (<div>
-        //   <button onClick={() => }>
-        //     {state ? "Save" : "Change"}
-        //   </button>{" "}
-        // </div>
-      )}
+      {task.map((item) => (
+        <List
+          item={item}
+          handleChange={handleChange}
+          handleDelete={handleDelete}
+        />
+      ))}
     </div>
   );
 }

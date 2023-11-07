@@ -1,19 +1,29 @@
 import { useState } from "react";
 
-function List({ state, setState, listItem, handleClick, task }) {
-  const handleChange = (listItem) => {
-    setState((prev) => !prev);
-    console.log(task.filter((i) => i.id === listItem.id));
+function List({ item, handleDelete, handleChange }) {
+  const [change, setChange] = useState(false);
+  const [inputText, setInputText] = useState(item.title);
+  const goChange = () => {
+    if (change) {
+      handleChange(item.id, inputText);
+      setChange(!change);
+    } else {
+      setChange(!change);
+    }
   };
 
-  const saveData = () => {};
   return (
-    <div key={listItem.id}>
-      {state ? <input /> : listItem.title}
-      <button onClick={() => handleClick()}>Delete</button>
-      <button onClick={() => handleChange(listItem)}>
-        {state ? "Save" : "Change"}
-      </button>
+    <div key={item.id}>
+      {change ? (
+        <input
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+        />
+      ) : (
+        <p> {item.title}</p>
+      )}
+      <button onClick={() => handleDelete(item.id)}>Delete</button>
+      <button onClick={() => goChange()}>{change ? "Save" : "Change"}</button>
     </div>
   );
 }
