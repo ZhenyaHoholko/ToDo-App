@@ -3,6 +3,7 @@ import { useState } from "react";
 function List({ item, handleDelete, handleChange }) {
   const [change, setChange] = useState(false);
   const [inputText, setInputText] = useState(item.title);
+  const [through, setThrough] = useState(true);
   const goChange = () => {
     if (change) {
       handleChange(item.id, inputText);
@@ -13,7 +14,11 @@ function List({ item, handleDelete, handleChange }) {
   };
 
   return (
-    <div key={item.id}>
+    <div
+      onClick={() => setThrough((prev) => !prev)}
+      className={through ? "crose" : "croseNo"}
+      key={item.id}
+    >
       {change ? (
         <input
           value={inputText}

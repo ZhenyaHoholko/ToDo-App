@@ -21,6 +21,7 @@ function App(inputText) {
       <Input task={task} setTask={setTask} />
       {task.map((item) => (
         <List
+          key={item.id}
           item={item}
           handleChange={handleChange}
           handleDelete={handleDelete}
