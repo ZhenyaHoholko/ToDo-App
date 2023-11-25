@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Input from "./Components/Input";
+import InputComponent from "./Components/InputComponent";
 import List from "./Components/List";
 import { useState } from "react";
 
@@ -17,16 +17,18 @@ function App(inputText) {
   };
   return (
     <div className="App">
-      <p>Let's do it!</p>
-      <Input task={task} setTask={setTask} />
-      {task.map((item) => (
-        <List
-          key={item.id}
-          item={item}
-          handleChange={handleChange}
-          handleDelete={handleDelete}
-        />
-      ))}
+      <p className="main_phrase">Let's do it!</p>
+      <InputComponent task={task} setTask={setTask} />
+      <div className="block">
+        {task.map((item) => (
+          <List
+            key={item.id}
+            item={item}
+            handleChange={handleChange}
+            handleDelete={handleDelete}
+          />
+        ))}
+      </div>
     </div>
   );
 }

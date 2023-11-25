@@ -1,8 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@1,100&family=Open+Sans&family=Poppins:wght@400;500;600;700&display=swap");
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* margin: 0; */
+  background: rgb(146, 146, 202);
+}
+.App {
+  text-align: center;
+  width: 100vh;
+  background-color: rgb(8, 8, 93);
+  /* margin: 30px; */
+  padding: 10%;
+  height: 59vh;
+  overflow-y: auto;
+  border-radius: 20px;
+}
+.main_phrase {
+  font-size: 40px;
+  font-family: "Open Sans", sans-serif;
+  color: rgb(255, 255, 255);
+}
+.block {
+  /* width: 70%; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color: bisque; */
+  width: 100%;
+}
+.tasks-style {
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  text-align: left;
+  background-color: rgb(173, 158, 186);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7px;
+  padding: 0 10px;
+  height: 55px;
+  width: 80%;
+  border-radius: 10px;
+}
+.task-style {
+  padding: 10px;
+}
+.inputStyle {
+  width: 70%;
+}
+.btn {
+  margin-left: 5px;
+}
+.btn-tasks {
+  margin: 5px;
+  font-size: 20px;
+}
 .crose {
   cursor: pointer;
 }
 
 .croseNo {
-  content: "";
+  cursor: pointer;
   text-decoration: line-through;
 }

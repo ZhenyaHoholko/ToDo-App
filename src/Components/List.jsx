@@ -1,4 +1,6 @@
+import { Button, Input } from "antd";
 import { useState } from "react";
+import { DeleteOutlined, FormOutlined, CheckOutlined } from "@ant-design/icons";
 
 function List({ item, handleDelete, handleChange }) {
   const [change, setChange] = useState(false);
@@ -14,21 +16,39 @@ function List({ item, handleDelete, handleChange }) {
   };
 
   return (
-    <div
-      onClick={() => setThrough((prev) => !prev)}
-      className={through ? "crose" : "croseNo"}
-      key={item.id}
-    >
+    <div key={item.id} className="tasks-style">
       {change ? (
-        <input
+        <Input
+          className="inputStyle"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
         />
       ) : (
-        <p> {item.title}</p>
+        <p
+          onClick={() => setThrough((prev) => !prev)}
+          className={through ? "crose task-style" : "croseNo task-style"}
+        >
+          {" "}
+          {item.title}
+        </p>
       )}
-      <button onClick={() => handleDelete(item.id)}>Delete</button>
-      <button onClick={() => goChange()}>{change ? "Save" : "Change"}</button>
+      <div className="buttons-style">
+        {/* <Button >
+          Delete
+        </Button> */}
+        <DeleteOutlined
+          className="btn-tasks"
+          onClick={() => handleDelete(item.id)}
+        />
+        {/* <Button className="btn" onClick={() => goChange()}>
+          {change ? "Save" : "Change"}
+        </Button> */}
+        {change ? (
+          <CheckOutlined className="btn-tasks" onClick={() => goChange()} />
+        ) : (
+          <FormOutlined className="btn-tasks" onClick={() => goChange()} />
+        )}
+      </div>
     </div>
   );
 }
