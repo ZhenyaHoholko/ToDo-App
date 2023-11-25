@@ -9,8 +9,9 @@ function InputComponent({ task, setTask }) {
     console.log(task);
   };
   return (
-    <div>
+    <div className="inputStyle-block">
       <Input
+        placeholder="What is the task today?"
         className="inputStyle"
         value={text}
         onChange={(e) => setText(e.target.value)}

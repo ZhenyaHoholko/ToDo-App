@@ -33,16 +33,10 @@ function List({ item, handleDelete, handleChange }) {
         </p>
       )}
       <div className="buttons-style">
-        {/* <Button >
-          Delete
-        </Button> */}
         <DeleteOutlined
           className="btn-tasks"
           onClick={() => handleDelete(item.id)}
         />
-        {/* <Button className="btn" onClick={() => goChange()}>
-          {change ? "Save" : "Change"}
-        </Button> */}
         {change ? (
           <CheckOutlined className="btn-tasks" onClick={() => goChange()} />
         ) : (
